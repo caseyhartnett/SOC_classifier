@@ -1,0 +1,6 @@
+stages:
+  download_onet_data:
+    cmd: wget https://www.onetcenter.org/dl_files/database/db_20_1_text/Sample%20of%20Reported%20Titles.txt
+      -O data/onet_data.txt
+    outs:
+    - data/onet_data.txt
