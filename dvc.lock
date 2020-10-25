@@ -4,3 +4,14 @@ download_onet_data:
   outs:
   - path: data/onet_data.txt
     md5: fe55895b2c1895874eda924dd3aa0b2e
+download_onet_job_titles:
+  cmd: wget https://www.onetcenter.org/dl_files/database/db_25_0_text/Occupation%20Data.txt
+    -O data/onet_job_titles.txt
+  outs:
+  - path: data/onet_job_titles.txt
+    md5: e605b12440aaec67fef979521ef98907
+modify_data:
+  cmd: python src/modify_data.py
+  outs:
+  - path: data/modified_data.csv
+    md5: 650c6ac4e43ffa3cc8ea84cdbe238e9a

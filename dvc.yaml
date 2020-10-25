@@ -4,3 +4,12 @@ stages:
       -O data/onet_data.txt
     outs:
     - data/onet_data.txt
+  download_onet_job_titles:
+    cmd: wget https://www.onetcenter.org/dl_files/database/db_25_0_text/Occupation%20Data.txt
+      -O data/onet_job_titles.txt
+    outs:
+    - data/onet_job_titles.txt
+  modify_data:
+    cmd: python src/modify_data.py
+    outs:
+    - data/modified_data.csv
