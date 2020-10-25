@@ -12,6 +12,29 @@ download_onet_job_titles:
     md5: e605b12440aaec67fef979521ef98907
 modify_data:
   cmd: python src/modify_data.py
+  deps:
+  - path: data/onet_data.txt
+    md5: fe55895b2c1895874eda924dd3aa0b2e
+  - path: data/onet_job_titles.txt
+    md5: e605b12440aaec67fef979521ef98907
+  - path: src/modify_data.py
+    md5: bc59ef9ea68d7b6f9ef01de9ab7f3378
   outs:
   - path: data/modified_data.csv
     md5: 650c6ac4e43ffa3cc8ea84cdbe238e9a
+classify_and_pickle:
+  cmd: python src/classify_and_pickle.py
+  deps:
+  - path: data/modified_data.csv
+    md5: 650c6ac4e43ffa3cc8ea84cdbe238e9a
+  - path: src/classify_and_pickle.py
+    md5: 7de415cf87c29e5a0e23295224f3851b
+  - path: src/soc_classifier.py
+    md5: cad8cff389e76a7db321b3e97c20d651
+  outs:
+  - path: models/soc_code_model.pickle
+    md5: 7b90963133d8677e8110f940e6f08f88
+  - path: models/soc_high_level_model.pickle
+    md5: 1387990abae310080384a0b3a61235da
+  - path: models/soc_major_model.pickle
+    md5: c6761fd2b4b82f5dcac733b53f36224c

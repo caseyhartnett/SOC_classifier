@@ -61,7 +61,7 @@ def apply_modifications(job_sample_data: pd.DataFrame, job_title_data:pd.DataFra
     job_title_data = job_title_data.drop('Description', axis=1)
     job_title_data = job_title_data.rename(
         columns={'O*NET-SOC Code': 'soc_code', 'Title': 'soc_title'})
-    data = pd.merge(job_sample_data, job_title_data)  # combine data sources
+    data = pd.merge(job_sample_data, job_title_data, on='soc_code')  # combine data sources
     data = modify_data(data)  # modify merged data
     return data
 

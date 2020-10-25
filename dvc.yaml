@@ -11,5 +11,19 @@ stages:
     - data/onet_job_titles.txt
   modify_data:
     cmd: python src/modify_data.py
+    deps:
+    - data/onet_data.txt
+    - data/onet_job_titles.txt
+    - src/modify_data.py
     outs:
     - data/modified_data.csv
+  classify_and_pickle:
+    cmd: python src/classify_and_pickle.py
+    deps:
+    - data/modified_data.csv
+    - src/classify_and_pickle.py
+    - src/soc_classifier.py
+    outs:
+    - models/soc_code_model.pickle
+    - models/soc_high_level_model.pickle
+    - models/soc_major_model.pickle
